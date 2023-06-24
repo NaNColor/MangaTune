@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mangatune/pages/MangaPage.dart';
 import 'package:mangatune/data/Chapter.dart';
-import 'package:mangatune/data/Manga.dart';git
+import 'package:mangatune/data/Manga.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _MyHomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    //CollectionReference gallery = FirebaseFirestore.instance.collection('gallery');
+    //CollectionReference Mangas = FirebaseFirestore.instance.collection('Mangas');
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -99,121 +99,118 @@ class _MyHomePageState extends State<HomePage> {
 
   Future<List<Manga>> getMangas() async {
     List<Manga> mangas = [];
-    List<Chapter> testChapters = [];
-    List<String> testUrlsPageRussian = [];
-    List<String> testUrlsPageEnglish = [];
-
-    testUrlsPageRussian.add(
-        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/001_tOP9.png");
-    testUrlsPageRussian.add(
-        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/002_kTPv.png");
-    testUrlsPageRussian.add(
-        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/003_9Lq6.png");
-    testUrlsPageRussian.add(
-        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/004_12P7.png");
-    testUrlsPageRussian.add(
-        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/005_k8We.png");
-    testUrlsPageRussian.add(
-        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/006_BMLS.png");
-    testUrlsPageRussian.add(
-        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/007_eet9.png");
-    testUrlsPageRussian.add(
-        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/008_J1H2.png");
-    testUrlsPageRussian.add(
-        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/009_kFkb.png");
-    testUrlsPageRussian.add(
-        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/010_NiuI.png");
-
-    testUrlsPageEnglish.add(
-        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/001.jpg");
-    testUrlsPageEnglish.add(
-        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/002.jpg");
-    testUrlsPageEnglish.add(
-        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/003.jpg");
-    testUrlsPageEnglish.add(
-        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/005.jpg");
-    testUrlsPageEnglish.add(
-        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/006.jpg");
-    testUrlsPageEnglish.add(
-        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/007.jpg");
-    testUrlsPageEnglish.add(
-        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/008.jpg");
-    testUrlsPageEnglish.add(
-        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/009.jpg");
-    testUrlsPageEnglish.add(
-        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/010.jpg");
-    testUrlsPageEnglish.add(
-        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/011.jpg");
-
-    testChapters.add(Chapter(
-      title: "Chapter 1",
-      description: "Description Chapter",
-      urlsPageRussian: testUrlsPageRussian,
-      urlsPageEnglish: testUrlsPageEnglish,
-    ));
-
-    testChapters.add(Chapter(
-      title: "Chapter 2",
-      description: "Description Chapter",
-      urlsPageRussian: testUrlsPageRussian,
-      urlsPageEnglish: testUrlsPageEnglish,
-    ));
-
-    testChapters.add(Chapter(
-      title: "Chapter 3",
-      description: "Description Chapter",
-      urlsPageRussian: testUrlsPageRussian,
-      urlsPageEnglish: testUrlsPageEnglish,
-    ));
-
-    testChapters.add(Chapter(
-      title: "Chapter 4",
-      description: "Description Chapter",
-      urlsPageRussian: testUrlsPageRussian,
-      urlsPageEnglish: testUrlsPageEnglish,
-    ));
-
-    testChapters.add(Chapter(
-      title: "Chapter 5",
-      description: "Description Chapter",
-      urlsPageRussian: testUrlsPageRussian,
-      urlsPageEnglish: testUrlsPageEnglish,
-    ));
-
-    mangas.add(Manga(
-      url:
-          "https://cdn.myanimelist.net/r/167x242/images/manga/1/12193.webp?s=a233ddc40dc03f65009dd65ae3acacbb",
-      title: "Manga from interesting source 1",
-      date: "2004",
-      author: "name author",
-      chapters: testChapters,
-    ));
-    mangas.add(Manga(
-      url:
-          "https://cdn.myanimelist.net/r/167x242/images/manga/2/49363.webp?s=d032b3cef8bb51e329f699c4ccfa6f8f",
-      title: "Manga from interesting source 2",
-      date: "2006",
-      author: "name author",
-      chapters: testChapters,
-    ));
-    mangas.add(Manga(
-      url:
-          "https://cdn.myanimelist.net/r/167x242/images/manga/2/178011.webp?s=d425cc275bcb844380469d59935a4014",
-      title: "Manga from not interesting source 1",
-      date: "2009",
-      author: "name author",
-      chapters: testChapters,
-    ));
+    List<Chapter> chapters = [];
+    //int incrementation = 1;
     await FirebaseFirestore.instance
         .collection('Mangas')
         .get()
-        .then((QuerySnapshot querySnapshot) {
-      querySnapshot.docs.forEach((QueryDocumentSnapshot doc) {
-        mangas.add(Manga.fromDoc(doc));
-      });
+        .then((result) {
+      for (QueryDocumentSnapshot manga in result.docs){
+        //incrementation = 1;
+        manga.reference.collection('Chapters').get().then(
+                (QuerySnapshot querySnapshot)
+            { querySnapshot.docs.forEach((QueryDocumentSnapshot docChapter) {
+              chapters.add(Chapter.fromDoc(docChapter));
+            });}
+        );
+        mangas.add(Manga.fromDoc(manga,chapters));
+        print("size");
+        print(mangas[0].chapters.length);
+        chapters = [];
+      }
+      //querySnapshot.docs.forEach((QueryDocumentSnapshot docManga) {        });
     });
-    return mangas;
-    return mangas;
+      if (mangas.isNotEmpty)
+        {
+          return mangas;
+        }
+      List<Chapter> testChapters = [];
+      List<String> testUrlsPageRussian = [];
+      List<String> testUrlsPageEnglish = [];
+
+      testUrlsPageRussian.add(
+          "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/001_tOP9.png");
+      testUrlsPageRussian.add(
+          "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/002_kTPv.png");
+      testUrlsPageRussian.add(
+          "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/003_9Lq6.png");
+      testUrlsPageRussian.add(
+          "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/004_12P7.png");
+      testUrlsPageRussian.add(
+          "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/005_k8We.png");
+      testUrlsPageRussian.add(
+          "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/006_BMLS.png");
+      testUrlsPageRussian.add(
+          "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/007_eet9.png");
+      testUrlsPageRussian.add(
+          "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/008_J1H2.png");
+      testUrlsPageRussian.add(
+          "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/009_kFkb.png");
+      testUrlsPageRussian.add(
+          "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/010_NiuI.png");
+
+      testChapters.add(Chapter(
+        title: "Chapter 1",
+        description: "Description Chapter",
+        urlsPageRussian: testUrlsPageRussian,
+        urlsPageEnglish: testUrlsPageEnglish,
+      ));
+
+      testChapters.add(Chapter(
+        title: "Chapter 2",
+        description: "Description Chapter",
+        urlsPageRussian: testUrlsPageRussian,
+        urlsPageEnglish: testUrlsPageEnglish,
+      ));
+
+      testChapters.add(Chapter(
+        title: "Chapter 3",
+        description: "Description Chapter",
+        urlsPageRussian: testUrlsPageRussian,
+        urlsPageEnglish: testUrlsPageEnglish,
+      ));
+
+      testChapters.add(Chapter(
+        title: "Chapter 4",
+        description: "Description Chapter",
+        urlsPageRussian: testUrlsPageRussian,
+        urlsPageEnglish: testUrlsPageEnglish,
+      ));
+
+      testChapters.add(Chapter(
+        title: "Chapter 5",
+        description: "Description Chapter",
+        urlsPageRussian: testUrlsPageRussian,
+        urlsPageEnglish: testUrlsPageEnglish,
+      ));
+
+      mangas.add(Manga(
+        url:
+        "https://cdn.myanimelist.net/r/167x242/images/manga/1/12193.webp?s=a233ddc40dc03f65009dd65ae3acacbb",
+        title: "Manga from interesting source 1",
+        date: 2004,
+        author: "name author",
+        chapters: testChapters,
+      ));
+      mangas.add(Manga(
+        url:
+        "https://cdn.myanimelist.net/r/167x242/images/manga/2/49363.webp?s=d032b3cef8bb51e329f699c4ccfa6f8f",
+        title: "Manga from interesting source 2",
+        date: 2006,
+        author: "name author",
+        chapters: testChapters,
+      ));
+      mangas.add(Manga(
+        url:
+        "https://cdn.myanimelist.net/r/167x242/images/manga/2/178011.webp?s=d425cc275bcb844380469d59935a4014",
+        title: "Manga from not interesting source 1",
+        date: 2009,
+        author: "name author",
+        chapters: testChapters,
+      ));
+      return mangas;
+      //return mangas;
+
   }
 
   Widget buildGrid(List<Manga> mangaList) {
@@ -250,7 +247,7 @@ class _MyHomePageState extends State<HomePage> {
                         children: [
                           SizedBox(height: 24),
                           Text(
-                            mangaList[index].date,
+                            mangaList[index].date.toString(),
                             style: TextStyle(
                               fontSize: 12,
                               fontFamily: 'Arial',

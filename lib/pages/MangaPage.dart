@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../data/Manga.dart';
+import 'package:mangatune/data/Manga.dart';
 import 'MangaReaderPage.dart';
 
 class MangaPage extends StatelessWidget {

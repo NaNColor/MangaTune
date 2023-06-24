@@ -7,10 +7,9 @@ class Manga {
   late int likes;
   late String docId;
   late String url;
-  late String date;
+  late int date;
   late String author;
   late List<Chapter> chapters;
-
   Manga({
     required this.title,
     required this.url,
@@ -22,12 +21,14 @@ class Manga {
     docId = "123";
   }
 
-  Manga.fromDoc(QueryDocumentSnapshot doc) {
+  Manga.fromDoc(QueryDocumentSnapshot doc, List<Chapter> chap) {
     title = doc["title"];
     url = doc["pic"];
     author = doc["Author"];
     date = doc["year"];
     docId = doc.id;
+    chapters = chap;
     //chapters
   }
+
 }

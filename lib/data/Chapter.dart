@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 class Chapter {
   late String title;
   late List<String> urlsPageRussian;
@@ -11,5 +12,15 @@ class Chapter {
     required this.urlsPageRussian,
     required this.urlsPageEnglish,
     required this.description,
-  });
+  })
+  {urlsPageOriginal = urlsPageEnglish;
+  urlsPageSpanish = [];}
+  Chapter.fromDoc(QueryDocumentSnapshot doc){
+    title = doc["Title"];
+    description = doc.id;
+    urlsPageRussian = List<String>.from(doc["PageRussian"]);
+    urlsPageEnglish = List<String>.from(doc["PageEnglish"]);
+    urlsPageSpanish = List<String>.from(doc["PageSpanish"]);
+    urlsPageOriginal = List<String>.from(doc["PageOriginal"]);
+  }
 }
