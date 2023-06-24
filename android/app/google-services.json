@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "859871425299",
+    "project_id": "mangatune-a4e54",
+    "storage_bucket": "mangatune-a4e54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:859871425299:android:7ec9651d54b830ef37a0e6",
+        "android_client_info": {
+          "package_name": "com.example.mangatune"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "859871425299-179u7g66atlaoeq4v2dn3tbmh8dmbm3v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGtD4-WO5VcM3heQhM4poFqTlS2IY-AKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "859871425299-179u7g66atlaoeq4v2dn3tbmh8dmbm3v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
