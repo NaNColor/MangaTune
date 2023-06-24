@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import '../data/Chapter.dart';
 
 class MangaReaderPage extends StatelessWidget {
@@ -8,13 +9,28 @@ class MangaReaderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Реализация экрана чтения манги
     return Scaffold(
       appBar: AppBar(
         title: Text(chapter.title),
       ),
-      body: Center(
-        child: Text('Reading ${chapter.title}'),
+      body: Container(
+        child: CarouselSlider(
+          options: CarouselOptions(
+            height: double.infinity,
+            viewportFraction: 1.0,
+            enableInfiniteScroll: false,
+          ),
+          items: chapter.urlsPage.map((url) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Image.network(
+                  url,
+                  fit: BoxFit.contain,
+                );
+              },
+            );
+          }).toList(),
+        ),
       ),
     );
   }

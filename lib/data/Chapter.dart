@@ -1,10 +1,11 @@
 class Chapter {
   late String title;
-  late String url;
+  late List<String> urlsPage;
   late String description;
 
   Chapter({
     required this.title,
-    required this.description
+    required this.urlsPage,
+    required this.description,
   });
 }

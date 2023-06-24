@@ -100,21 +100,58 @@ class _MyHomePageState extends State<HomePage> {
   Future<List<Manga>> getMangas() async {
     List<Manga> mangas = [];
     List<Chapter> testChapters = [];
+    List<String> testUrlsPage = [];
 
-    testChapters
-        .add(Chapter(title: "Chapter 1", description: "Description Chapter"));
+    testUrlsPage.add(
+        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/001_tOP9.png");
+    testUrlsPage.add(
+        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/002_kTPv.png");
+    testUrlsPage.add(
+        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/003_9Lq6.png");
+    testUrlsPage.add(
+        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/004_12P7.png");
+    testUrlsPage.add(
+        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/005_k8We.png");
+    testUrlsPage.add(
+        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/006_BMLS.png");
+    testUrlsPage.add(
+        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/007_eet9.png");
+    testUrlsPage.add(
+        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/008_J1H2.png");
+    testUrlsPage.add(
+        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/008_J1H2.png");
+    testUrlsPage.add(
+        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/007_eet9.png");
 
-    testChapters
-        .add(Chapter(title: "Chapter 2", description: "Description Chapter"));
+    testChapters.add(Chapter(
+      title: "Chapter 1",
+      description: "Description Chapter",
+      urlsPage: testUrlsPage,
+    ));
 
-    testChapters
-        .add(Chapter(title: "Chapter 3", description: "Description Chapter"));
+    testChapters.add(Chapter(
+      title: "Chapter 2",
+      description: "Description Chapter",
+      urlsPage: testUrlsPage,
+    ));
 
-    testChapters
-        .add(Chapter(title: "Chapter 4", description: "Description Chapter"));
+    testChapters.add(Chapter(
+      title: "Chapter 3",
+      description: "Description Chapter",
+      urlsPage: testUrlsPage,
+    ));
 
-    testChapters
-        .add(Chapter(title: "Chapter 5", description: "Description Chapter"));
+    testChapters.add(Chapter(
+      title: "Chapter 4",
+      description: "Description Chapter",
+      urlsPage: testUrlsPage,
+    ));
+
+    testChapters.add(Chapter(
+      title: "Chapter 5",
+      description: "Description Chapter",
+      urlsPage: testUrlsPage,
+    ));
 
     mangas.add(Manga(
       url:
