@@ -14,7 +14,7 @@ class _MyHomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    //CollectionReference gallery = FirebaseFirestore.instance.collection('gallery');
+    CollectionReference Mangas = FirebaseFirestore.instance.collection('Mangas');
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -36,7 +36,7 @@ class _MyHomePageState extends State<HomePage> {
         ],
       ),
       body: FutureBuilder<List<Manga>>(
-        //body: FutureBuilder<DocumentSnapshot>(
+      //body: FutureBuilder<DocumentSnapshot>(
         /// Initialize FlutterFire:
         future: getMangas(),
         builder: (BuildContext context, snapshot) {
@@ -95,29 +95,29 @@ class _MyHomePageState extends State<HomePage> {
 
   Future<List<Manga>> getMangas() async {
     List<Manga> mangas = [];
-    mangas.add(Manga(
-        urlManga:
-            "https://cdn.myanimelist.net/r/167x242/images/manga/1/12193.webp?s=a233ddc40dc03f65009dd65ae3acacbb",
-        titleManga: "Manga from interesting source 1",
-        dateManga: "2004"));
-    mangas.add(Manga(
-        urlManga:
-            "https://cdn.myanimelist.net/r/167x242/images/manga/2/49363.webp?s=d032b3cef8bb51e329f699c4ccfa6f8f",
-        titleManga: "Manga from interesting source 2",
-        dateManga: "2006"));
-    mangas.add(Manga(
-        urlManga:
-            "https://cdn.myanimelist.net/r/167x242/images/manga/2/178011.webp?s=d425cc275bcb844380469d59935a4014",
-        titleManga: "Manga from not interesting source 1",
-        dateManga: "2009"));
-    // await FirebaseFirestore.instance
-    //     .collection('gallery')
-    //     .get()
-    //     .then((QuerySnapshot querySnapshot) {
-    //   querySnapshot.docs.forEach((QueryDocumentSnapshot doc) {
-    //     images.add(Manga.fromDoc(doc));
-    //   });
-    // });
+    // mangas.add(Manga(
+    //     urlManga:
+    //         "https://cdn.myanimelist.net/r/167x242/images/manga/1/12193.webp?s=a233ddc40dc03f65009dd65ae3acacbb",
+    //     titleManga: "Manga from interesting source 1",
+    //     dateManga: "2004"));
+    // mangas.add(Manga(
+    //     urlManga:
+    //         "https://cdn.myanimelist.net/r/167x242/images/manga/2/49363.webp?s=d032b3cef8bb51e329f699c4ccfa6f8f",
+    //     titleManga: "Manga from interesting source 2",
+    //     dateManga: "2006"));
+    // mangas.add(Manga(
+    //     urlManga:
+    //         "https://cdn.myanimelist.net/r/167x242/images/manga/2/178011.webp?s=d425cc275bcb844380469d59935a4014",
+    //     titleManga: "Manga from not interesting source 1",
+    //     dateManga: "2009"));
+    await FirebaseFirestore.instance
+        .collection('Mangas')
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((QueryDocumentSnapshot doc) {
+        mangas.add(Manga.fromDoc(doc));
+      });
+    });
     return mangas;
   }
 
@@ -151,7 +151,7 @@ class _MyHomePageState extends State<HomePage> {
                       children: [
                         SizedBox(height: 24),
                         Text(
-                        mangaList[index].date,
+                          mangaList[index].date.toString(),
                         style: TextStyle(
                           fontSize: 12,
                           fontFamily: 'Arial',
