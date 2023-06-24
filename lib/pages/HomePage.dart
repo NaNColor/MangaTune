@@ -115,8 +115,9 @@ class _MyHomePageState extends State<HomePage> {
         );
         mangas.add(Manga.fromDoc(manga,chapters));
         print("size");
-        print(mangas[0].chapters.length);
-        chapters = [];
+        print(mangas[0]);
+        print(mangas[0].chapters);
+        //chapters = [];
       }
       //querySnapshot.docs.forEach((QueryDocumentSnapshot docManga) {        });
     });
@@ -209,8 +210,6 @@ class _MyHomePageState extends State<HomePage> {
         chapters: testChapters,
       ));
       return mangas;
-      //return mangas;
-
   }
 
   Widget buildGrid(List<Manga> mangaList) {
