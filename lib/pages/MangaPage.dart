@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../data/Manga.dart';
+import 'MangaReaderPage.dart';
 
 class MangaPage extends StatelessWidget {
   final Manga manga;
@@ -65,6 +66,15 @@ class MangaPage extends StatelessWidget {
                 return ListTile(
                   title: Text(chapter.title),
                   subtitle: Text(chapter.description),
+                  onTap: () {
+                    // Переход на новый экран для чтения манги
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MangaReaderPage(chapter: chapter),
+                      ),
+                    );
+                  },
                 );
               },
             ),
