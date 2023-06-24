@@ -1,6 +1,8 @@
-//import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'Manga.dart';
+import 'package:mangatune/pages/MangaPage.dart';
+import '../data/Chapter.dart';
+import '../data/Manga.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -67,7 +69,8 @@ class _MyHomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
-                icon: Icon(Icons.home, size: 36.0), //round with blue color and black border
+                icon: Icon(Icons.home, size: 36.0),
+                //round with blue color and black border
                 color: Colors.blue,
                 onPressed: () {},
               ),
@@ -77,12 +80,13 @@ class _MyHomePageState extends State<HomePage> {
                 onPressed: () {},
               ),
               IconButton(
-                icon: Icon(Icons.star, size: 36.0),//star icon
+                icon: Icon(Icons.star, size: 36.0), //star icon
                 //color: Colors.black,
                 onPressed: () {},
               ),
               IconButton(
-                icon: Icon(Icons.account_box, size: 36.0), // round figure with black border
+                icon: Icon(Icons.account_box, size: 36.0),
+                // round figure with black border
                 //color: Colors.black,
                 onPressed: () {},
               ),
@@ -95,21 +99,47 @@ class _MyHomePageState extends State<HomePage> {
 
   Future<List<Manga>> getMangas() async {
     List<Manga> mangas = [];
+    List<Chapter> testChapters = [];
+
+    testChapters
+        .add(Chapter(title: "Chapter 1", description: "Description Chapter"));
+
+    testChapters
+        .add(Chapter(title: "Chapter 2", description: "Description Chapter"));
+
+    testChapters
+        .add(Chapter(title: "Chapter 3", description: "Description Chapter"));
+
+    testChapters
+        .add(Chapter(title: "Chapter 4", description: "Description Chapter"));
+
+    testChapters
+        .add(Chapter(title: "Chapter 5", description: "Description Chapter"));
+
     mangas.add(Manga(
-        urlManga:
-            "https://cdn.myanimelist.net/r/167x242/images/manga/1/12193.webp?s=a233ddc40dc03f65009dd65ae3acacbb",
-        titleManga: "Manga from interesting source 1",
-        dateManga: "2004"));
+      url:
+          "https://cdn.myanimelist.net/r/167x242/images/manga/1/12193.webp?s=a233ddc40dc03f65009dd65ae3acacbb",
+      title: "Manga from interesting source 1",
+      date: "2004",
+      author: "name author",
+      chapters: testChapters,
+    ));
     mangas.add(Manga(
-        urlManga:
-            "https://cdn.myanimelist.net/r/167x242/images/manga/2/49363.webp?s=d032b3cef8bb51e329f699c4ccfa6f8f",
-        titleManga: "Manga from interesting source 2",
-        dateManga: "2006"));
+      url:
+          "https://cdn.myanimelist.net/r/167x242/images/manga/2/49363.webp?s=d032b3cef8bb51e329f699c4ccfa6f8f",
+      title: "Manga from interesting source 2",
+      date: "2006",
+      author: "name author",
+      chapters: testChapters,
+    ));
     mangas.add(Manga(
-        urlManga:
-            "https://cdn.myanimelist.net/r/167x242/images/manga/2/178011.webp?s=d425cc275bcb844380469d59935a4014",
-        titleManga: "Manga from not interesting source 1",
-        dateManga: "2009"));
+      url:
+          "https://cdn.myanimelist.net/r/167x242/images/manga/2/178011.webp?s=d425cc275bcb844380469d59935a4014",
+      title: "Manga from not interesting source 1",
+      date: "2009",
+      author: "name author",
+      chapters: testChapters,
+    ));
     // await FirebaseFirestore.instance
     //     .collection('gallery')
     //     .get()
@@ -136,51 +166,56 @@ class _MyHomePageState extends State<HomePage> {
           ),
           itemCount: mangaList.length,
           itemBuilder: (BuildContext context, int index) {
-            return InkWell(
+            return GestureDetector(
               onTap: () {
-                //Navigator.push(context, MangaRouter.getRoute(mangaList[index]));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MangaPage(manga: mangaList[index])),
+                );
               },
               child: Card(
                 child: Row(children: [
-                    Image.network(mangaList[index].url,
-                        width: 128, height: 128, fit: BoxFit.scaleDown), //fill
-                SizedBox(
-                  width: 248,
+                  Image.network(mangaList[index].url,
+                      width: 128, height: 128, fit: BoxFit.scaleDown), //fill
+                  SizedBox(
+                    width: 248,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 24),
-                        Text(
-                        mangaList[index].date,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: 'Arial',
-                        ),
-                      ),
-                      //date
-                        SizedBox(height: 16),
-                        Text(
-                          mangaList[index].title,
-                          overflow: TextOverflow.fade,
-                          maxLines: 2,
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontFamily: 'Arial',
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 24),
+                          Text(
+                            mangaList[index].date,
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontFamily: 'Arial',
+                            ),
                           ),
-                        ),
-                      //title
-                        SizedBox(height: 16),
-                      Row(children: [
-                        //star
-                        Icon(Icons.star),
-                        Text("Save"),
-                        SizedBox(width: 24),
-                        Icon(Icons.favorite),
-                        Text("Like"),
-                        //like
-                      ]),
-                    ]),
-                ),]),
+                          //date
+                          SizedBox(height: 16),
+                          Text(
+                            mangaList[index].title,
+                            overflow: TextOverflow.fade,
+                            maxLines: 2,
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontFamily: 'Arial',
+                            ),
+                          ),
+                          //title
+                          SizedBox(height: 16),
+                          Row(children: [
+                            //star
+                            Icon(Icons.star),
+                            Text("Save"),
+                            SizedBox(width: 24),
+                            Icon(Icons.favorite),
+                            Text("Like"),
+                            //like
+                          ]),
+                        ]),
+                  ),
+                ]),
               ),
             );
           }),
