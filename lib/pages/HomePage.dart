@@ -100,57 +100,84 @@ class _MyHomePageState extends State<HomePage> {
   Future<List<Manga>> getMangas() async {
     List<Manga> mangas = [];
     List<Chapter> testChapters = [];
-    List<String> testUrlsPage = [];
+    List<String> testUrlsPageRussian = [];
+    List<String> testUrlsPageEnglish = [];
 
-    testUrlsPage.add(
+    testUrlsPageRussian.add(
         "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/001_tOP9.png");
-    testUrlsPage.add(
+    testUrlsPageRussian.add(
         "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/002_kTPv.png");
-    testUrlsPage.add(
+    testUrlsPageRussian.add(
         "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/003_9Lq6.png");
-    testUrlsPage.add(
+    testUrlsPageRussian.add(
         "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/004_12P7.png");
-    testUrlsPage.add(
+    testUrlsPageRussian.add(
         "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/005_k8We.png");
-    testUrlsPage.add(
+    testUrlsPageRussian.add(
         "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/006_BMLS.png");
-    testUrlsPage.add(
+    testUrlsPageRussian.add(
         "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/007_eet9.png");
-    testUrlsPage.add(
+    testUrlsPageRussian.add(
         "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/008_J1H2.png");
-    testUrlsPage.add(
-        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/008_J1H2.png");
-    testUrlsPage.add(
-        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/007_eet9.png");
+    testUrlsPageRussian.add(
+        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/009_kFkb.png");
+    testUrlsPageRussian.add(
+        "https://img33.imgslib.link//manga/kimetsu-no-yaiba/chapters/1-1/010_NiuI.png");
+
+    testUrlsPageEnglish.add(
+        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/001.jpg");
+    testUrlsPageEnglish.add(
+        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/002.jpg");
+    testUrlsPageEnglish.add(
+        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/003.jpg");
+    testUrlsPageEnglish.add(
+        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/005.jpg");
+    testUrlsPageEnglish.add(
+        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/006.jpg");
+    testUrlsPageEnglish.add(
+        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/007.jpg");
+    testUrlsPageEnglish.add(
+        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/008.jpg");
+    testUrlsPageEnglish.add(
+        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/009.jpg");
+    testUrlsPageEnglish.add(
+        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/010.jpg");
+    testUrlsPageEnglish.add(
+        "https://demonslayer-mangaonline.com/wp-content/uploads/2019/05/011.jpg");
 
     testChapters.add(Chapter(
       title: "Chapter 1",
       description: "Description Chapter",
-      urlsPage: testUrlsPage,
+      urlsPageRussian: testUrlsPageRussian,
+      urlsPageEnglish: testUrlsPageEnglish,
     ));
 
     testChapters.add(Chapter(
       title: "Chapter 2",
       description: "Description Chapter",
-      urlsPage: testUrlsPage,
+      urlsPageRussian: testUrlsPageRussian,
+      urlsPageEnglish: testUrlsPageEnglish,
     ));
 
     testChapters.add(Chapter(
       title: "Chapter 3",
       description: "Description Chapter",
-      urlsPage: testUrlsPage,
+      urlsPageRussian: testUrlsPageRussian,
+      urlsPageEnglish: testUrlsPageEnglish,
     ));
 
     testChapters.add(Chapter(
       title: "Chapter 4",
       description: "Description Chapter",
-      urlsPage: testUrlsPage,
+      urlsPageRussian: testUrlsPageRussian,
+      urlsPageEnglish: testUrlsPageEnglish,
     ));
 
     testChapters.add(Chapter(
       title: "Chapter 5",
       description: "Description Chapter",
-      urlsPage: testUrlsPage,
+      urlsPageRussian: testUrlsPageRussian,
+      urlsPageEnglish: testUrlsPageEnglish,
     ));
 
     mangas.add(Manga(
