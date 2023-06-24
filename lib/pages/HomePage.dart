@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mangatune/pages/MangaPage.dart';
 import 'package:mangatune/data/Chapter.dart';
-import 'package:mangatune/data/Manga.dart';
+import 'package:mangatune/data/Manga.dart';git
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
