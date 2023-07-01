@@ -99,21 +99,23 @@ class _MyHomePageState extends State<HomePage> {
 
   Future<List<Manga>> getMangas() async {
     List<Manga> mangas = [];
-    List<Chapter> chapters = [];
+
     //int incrementation = 1;
-    await FirebaseFirestore.instance
-        .collection('Mangas')
-        .get()
-        .then((result) {
-      for (QueryDocumentSnapshot manga in result.docs){
+    await FirebaseFirestore.instance.collection('Mangas').get().then((result) {
+      for (QueryDocumentSnapshot manga in result.docs) {
+        List<Chapter> chapters = [];
         //incrementation = 1;
         manga.reference.collection('Chapters').get().then(
-                (QuerySnapshot querySnapshot)
-            { querySnapshot.docs.forEach((QueryDocumentSnapshot docChapter) {
-              chapters.add(Chapter.fromDoc(docChapter));
-            });}
+          (QuerySnapshot querySnapshot) {
+            querySnapshot.docs.forEach(
+              (QueryDocumentSnapshot docChapter) {
+                chapters.add(Chapter.fromDoc(docChapter));
+              },
+            );
+          },
         );
-        mangas.add(Manga.fromDoc(manga,chapters));
+
+        mangas.add(Manga.fromDoc(manga, chapters));
         print("size");
         print(mangas[0]);
         print(mangas[0].chapters);
@@ -180,9 +182,11 @@ class _MyHomePageState extends State<HomePage> {
                           Row(children: [
                             //star
                             //Icon(Icons.star),
-                            SavedState(mangaList[index].docId, mangaList[index].saved),
+                            SavedState(
+                                mangaList[index].docId, mangaList[index].saved),
                             SizedBox(width: 24),
-                            LikedState(mangaList[index].docId, mangaList[index].liked),
+                            LikedState(
+                                mangaList[index].docId, mangaList[index].liked),
                             //like
                           ]),
                         ]),
@@ -193,28 +197,46 @@ class _MyHomePageState extends State<HomePage> {
           }),
     );
   }
+
   Widget SavedState(String docID, bool state) {
     return InkWell(
-      onTap: (){
-      updateViews(docID,"saved");
-      //setState(() {});
-      },
-      child: !state ?
-      Row(children: [Icon(Icons.star_border_rounded), Text("Save"),]) :
-      Row(children: [Icon(Icons.star_rounded, color: Colors.amberAccent,),Text("Save"),]),
-    );
-  }
-  Widget LikedState(String docID, bool state) {
-    return InkWell(
-      onTap: (){
-        updateViews(docID,"liked");
+      onTap: () {
+        updateViews(docID, "saved");
         //setState(() {});
       },
-      child: state ?
-      Row(children: [Icon(Icons.favorite, color: Colors.redAccent), Text("Like"),]) :
-      Row(children: [Icon(Icons.favorite_border),Text("Save"),]),
+      child: !state
+          ? Row(children: [
+              Icon(Icons.star_border_rounded),
+              Text("Save"),
+            ])
+          : Row(children: [
+              Icon(
+                Icons.star_rounded,
+                color: Colors.amberAccent,
+              ),
+              Text("Save"),
+            ]),
     );
   }
+
+  Widget LikedState(String docID, bool state) {
+    return InkWell(
+      onTap: () {
+        updateViews(docID, "liked");
+        //setState(() {});
+      },
+      child: state
+          ? Row(children: [
+              Icon(Icons.favorite, color: Colors.redAccent),
+              Text("Like"),
+            ])
+          : Row(children: [
+              Icon(Icons.favorite_border),
+              Text("Save"),
+            ]),
+    );
+  }
+
   void updateViews(String docID, String field) {
     // FirebaseFirestore.instance
     //     .collection('Mangas')
@@ -225,10 +247,10 @@ class _MyHomePageState extends State<HomePage> {
     final sfDocRef = FirebaseFirestore.instance.collection('Mangas').doc(docID);
     FirebaseFirestore.instance.runTransaction((transaction) async {
       final snapshot = await transaction.get(sfDocRef);
-      final newField = !snapshot.get(field) ;
+      final newField = !snapshot.get(field);
       transaction.update(sfDocRef, {field: newField});
     }).then(
-          (value) => setState(() {}),
+      (value) => setState(() {}),
       onError: (e) => print("Error updating document $e"),
     );
   }
