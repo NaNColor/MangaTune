@@ -34,7 +34,11 @@ class _MangaReaderPageState extends State<MangaReaderPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.chapter.title),
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        title: Text(widget.chapter.title, style: TextStyle(color: Colors.black)),
       ),
       body: Container(
         child: Column(

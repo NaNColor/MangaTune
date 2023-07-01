@@ -11,7 +11,11 @@ class MangaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(manga.title),
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        title: Text(manga.title, style: TextStyle(color: Colors.black)),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
