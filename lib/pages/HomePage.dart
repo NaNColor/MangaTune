@@ -116,9 +116,6 @@ class _MyHomePageState extends State<HomePage> {
         );
 
         mangas.add(Manga.fromDoc(manga, chapters));
-        print("size");
-        print(mangas[0]);
-        print(mangas[0].chapters);
         //chapters = [];
       }
       //querySnapshot.docs.forEach((QueryDocumentSnapshot docManga) {        });
