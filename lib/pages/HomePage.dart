@@ -179,11 +179,10 @@ class _MyHomePageState extends State<HomePage> {
                           SizedBox(height: 16),
                           Row(children: [
                             //star
-                            Icon(Icons.star),
-                            Text("Save"),
+                            //Icon(Icons.star),
+                            SavedState(mangaList[index].docId, mangaList[index].saved),
                             SizedBox(width: 24),
-                            Icon(Icons.favorite),
-                            Text("Like"),
+                            LikedState(mangaList[index].docId, mangaList[index].liked),
                             //like
                           ]),
                         ]),
@@ -192,6 +191,45 @@ class _MyHomePageState extends State<HomePage> {
               ),
             );
           }),
+    );
+  }
+  Widget SavedState(String docID, bool state) {
+    return InkWell(
+      onTap: (){
+      updateViews(docID,"saved");
+      //setState(() {});
+      },
+      child: !state ?
+      Row(children: [Icon(Icons.star_border_rounded), Text("Save"),]) :
+      Row(children: [Icon(Icons.star_rounded, color: Colors.amberAccent,),Text("Save"),]),
+    );
+  }
+  Widget LikedState(String docID, bool state) {
+    return InkWell(
+      onTap: (){
+        updateViews(docID,"liked");
+        //setState(() {});
+      },
+      child: state ?
+      Row(children: [Icon(Icons.favorite, color: Colors.redAccent), Text("Like"),]) :
+      Row(children: [Icon(Icons.favorite_border),Text("Save"),]),
+    );
+  }
+  void updateViews(String docID, String field) {
+    // FirebaseFirestore.instance
+    //     .collection('Mangas')
+    //     .doc(docID)
+    //     .update({field: FieldValue})
+    //     .then((value) => print("Gallery Updated"))
+    //     .catchError((error) => print("Failed to update gallery: $error"));
+    final sfDocRef = FirebaseFirestore.instance.collection('Mangas').doc(docID);
+    FirebaseFirestore.instance.runTransaction((transaction) async {
+      final snapshot = await transaction.get(sfDocRef);
+      final newField = !snapshot.get(field) ;
+      transaction.update(sfDocRef, {field: newField});
+    }).then(
+          (value) => setState(() {}),
+      onError: (e) => print("Error updating document $e"),
     );
   }
 }
